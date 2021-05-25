@@ -1,16 +1,37 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect,  useState } from "react";
 
 const AddressFinder = () => {
   const [cep, setCep] = useState('');
-  const [data, setData] = useState(null);
+  const [form, setForm] = useState({
+    rua: '',
+    bairro: '',
+    cidade: '',
+    estado: ''
+  });
 
   useEffect(() => {
     if (cep.length > 7)
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then((response) => response.json())
-      .then((response) => setData(response))
+      .then((response) => setForm({
+        rua: response.logradouro,
+        bairro: response.bairro,
+        cidade: response.localidade,
+        estado: response.uf
+      }))
       .catch((error) => console.log(`Não foi possível obter o endereço do CEP informado! Erro:${error}`));
+
   }, [cep]);
+
+ 
+function searchingData(e) {
+  setCep(e.target.value);
+}
+
+function fillingForm({ target }) {
+  const {id, value} = target;
+  setForm({...form, [id]: value})
+}
 
   return (
     <div>  
@@ -21,15 +42,14 @@ const AddressFinder = () => {
           id="cep"
           placeholder="CEP"
           value={cep}
-          onChange={(e) => setCep(e.target.value)}
+          onChange={searchingData}
         />
       </div>
 
- 
       <form action="">
         <div className="input-form street-address">
           <label htmlFor="rua">Rua</label>
-          <input type="text" id="rua" value={data ? data.logradouro : ''} />
+          <input type="text" id="rua" value={form.rua} onChange={fillingForm}/>
         </div>
         <div className="input-form  number-address">
           <label htmlFor="numero">Número</label>
@@ -41,15 +61,15 @@ const AddressFinder = () => {
         </div>
         <div className="input-form  bairro-address">
           <label htmlFor="bairro">Bairro</label>
-          <input type="text" id="bairro" value={data ? data.bairro : ''}/>
+          <input type="text" id="bairro" value={form.bairro} onChange={fillingForm}/>
         </div>
         <div className="input-form  cidade-address">
           <label htmlFor="cidade">Cidade</label>
-          <input type="text" id="cidade" value={data ? data.localidade : ''}/>
+          <input type="text" id="cidade" value={form.cidade} onChange={fillingForm}/>
         </div>
         <div className="input-form  estado-address">
           <label htmlFor="estado">Estado</label>
-          <input type="text" id="estado" value={data ? data.uf : ''} />
+          <input type="text" id="estado" value={form.estado} onChange={fillingForm} />
         </div>
       </form>
     </div>

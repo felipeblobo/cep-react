@@ -80,7 +80,7 @@ input:focus {
 form {
   max-width: 40rem;
   margin: 1rem auto;
-  background-color: #3d3d3d;
+  background-color: rgb(97, 97, 97, .3);
   padding: 1rem 0;
   border-radius: 20px;
   display: flex;
@@ -106,8 +106,6 @@ form {
 
   label {
     font-size: 1.2rem;
-    margin-right: 1rem;  
-    // margin-bottom: .3rem;  
     justify-content: flex-start;
     
   }
@@ -125,18 +123,3 @@ form {
 
 }
 
-// .street-address {
-//   flex-basis: 100%;
- 
-//   input {
-//     width: 25rem;
-//   }
-// }
-
-// .complemento-address, .number-address, .estado-address {
-//   width:6rem;
-// }
-
-// .bairro-address .cidade-address {
-//   width:12rem;
-// }
