@@ -3,12 +3,11 @@
 ## 💻 Project
 Projeto para obtenção de dados de endereço por meio do consumo da API ViaCep utilizando React.
 
-Acesse aqui: https://devtalk.vercel.app/
 
 <br>
 
 <div align="center"  justify-content="center" margin-top="60px" >
- <img src="https://i.imgur.com/tEc83GF.gif" alt="Exemplo da aplicação" >
+ <img src="https://github.com/felipeblobo/cep-react/blob/3c2d7424ad23ddee099d52ba454b7d287812c1b4/CPT2105250758-817x664.gif" width='500px' alt="Exemplo da aplicação" >
 </div>
 
 
